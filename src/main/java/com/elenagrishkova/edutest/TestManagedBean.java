@@ -14,4 +14,13 @@ public class TestManagedBean {
     @Inject
     private DataSourse dataSourse;
 
+    private Object editorText;
+
+    public void setEditorText(Object editorText) {
+        this.editorText = editorText;
+    }
+
+    public Object getEditorText() {
+        return editorText;
+    }
 }
