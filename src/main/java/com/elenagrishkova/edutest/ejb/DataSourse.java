@@ -9,16 +9,16 @@ public class DataSourse {
 
     {
         //init
-        TestStruct testStruct = new TestStruct();
+        TestStruct testStruct = new TestStruct("ТЕСТ 1");
         testStruct.addQuestion(new Question(1, "Опиши, что знаешь", "text", null, false));
         testStruct.addQuestion(new Question(2, "Выдели 1 и 3", "checkbox", "42", true));
         testStruct.addQuestion(new Question(3, "который час?", "radio", "42", true));
-        testStructMap.put("ТЕСТ 1", testStruct );
-        testStruct = new TestStruct();
+        testStructMap.put(testStruct.getTitle(), testStruct );
+        testStruct = new TestStruct("ТЕСТ 2");
         testStruct.addQuestion(new Question(1, "Как тебя зовут?", "text", null, false));
         testStruct.addQuestion(new Question(2, "Выдели 2 и 3", "checkbox", "42", true));
         testStruct.addQuestion(new Question(3, "угадай вариант", "radio", "42", true));
-        testStructMap.put("ТЕСТ 2", testStruct );
+        testStructMap.put(testStruct.getTitle(), testStruct );
 
     }
 
