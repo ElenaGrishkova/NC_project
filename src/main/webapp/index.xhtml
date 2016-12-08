@@ -17,10 +17,10 @@
             <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
                 Здесь будет список тестов
                 <p:menu>
-                    <c:forEach var="var" value="#{testManagedBean.dataSourse.testStructMap}">
-                        <p:submenu label="#{var.title}">
+                    <c:forEach items="#{testManagedBean.dataSourсe.testStructMap}"  var="var">
+                        <p:submenu label="#{var.value.title}">
                             <p:menuitem value="Пройти тест"
-                                        actionListener="#{testManagedBean.browseCurrentTest(var.title)}"
+                                        actionListener="#{testManagedBean.browseCurrentTest(var.value.title)}"
                                         update="messages" icon="ui-icon-arrowrefresh-1-w"/>
                         </p:submenu>
 
@@ -35,17 +35,20 @@
             <p:layoutUnit position="center">
                 <p:panel id="basic" header="Basic" footer="Movie Details"
                          style="margin-bottom:20px">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputText value="1. Первый вопрос"/>
-                        <p:inputTextarea widgetVar="editor1" value="#{testManagedBean.editorText}"
-                              height="300"
-                                      style="margin-bottom:10px"/>
+                    <h:panelGrid  cellpadding="10">
+                        <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="var">
+                            <h:outputText value="#{var.question}"/>
+                            <p:inputTextarea widgetVar="editor1"
+                                             value="#{testManagedBean.answers}"
+                                  height="300"
+                                          style="margin-bottom:10px"/>
+                        </c:forEach>
                     </h:panelGrid>
                 </p:panel>
 
-                <p:commandButton value="Submit" action="#{testManagedBean.submit}"
-                                 icon="ui-icon-disk"/>
-                <p:commandButton value="Clear" type="button" icon="ui-icon-close"/>
+                <!--<p:commandButton value="Submit" action="#{testManagedBean.browseCu}"-->
+                                 <!--icon="ui-icon-disk"/>-->
+                <!--<p:commandButton value="Clear" type="button" icon="ui-icon-close"/>-->
 
             </p:layoutUnit>
         </p:layout>

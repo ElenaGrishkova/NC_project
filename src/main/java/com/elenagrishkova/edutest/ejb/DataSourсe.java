@@ -1,10 +1,11 @@
 package com.elenagrishkova.edutest.ejb;
 
+import javax.annotation.ManagedBean;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class DataSourse {
+@ManagedBean
+public class DataSourсe {
     private Map<String, TestStruct> testStructMap = new HashMap<>();
 
     {

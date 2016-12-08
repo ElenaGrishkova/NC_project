@@ -6,6 +6,10 @@ import java.util.List;
 public  class TestStruct {
     private List<Question> questionList;
 
+    public List<Question> getQuestionList() {
+        return questionList;
+    }
+
     private String title;
 
     public TestStruct(String title) {

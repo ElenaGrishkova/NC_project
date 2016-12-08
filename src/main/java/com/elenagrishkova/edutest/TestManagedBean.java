@@ -1,24 +1,29 @@
 package com.elenagrishkova.edutest;
-import com.elenagrishkova.edutest.ejb.DataSourse;
+import com.elenagrishkova.edutest.ejb.DataSourсe;
 import com.elenagrishkova.edutest.ejb.TestStruct;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Named
 @RequestScoped
 public class TestManagedBean {
     @Inject
-    private DataSourse dataSourse;
+    private DataSourсe dataSourсe;
 
     private TestStruct currentTest;
 
+    private List answers = new ArrayList();
 
-//    public TestManagedBean(DataSourse dataSourse) {
+    public List getAnswers() {
+        return answers;
+    }
+
+    //    public TestManagedBean(DataSourse dataSourse) {
 //        this.dataSourse = dataSourse;
 //        if (! dataSourse.getTestStructMap().isEmpty()) {
 //            currentTest = dataSourse.getTestStructMap().get(0);
@@ -26,12 +31,12 @@ public class TestManagedBean {
 //    }
 
 
-    public DataSourse getDataSourse() {
-        return dataSourse;
+    public DataSourсe getDataSourсe() {
+        return dataSourсe;
     }
 
-    public void setDataSourse(DataSourse dataSourse) {
-        this.dataSourse = dataSourse;
+    public void setDataSourсe(DataSourсe dataSourсe) {
+        this.dataSourсe = dataSourсe;
     }
 
 
@@ -44,17 +49,17 @@ public class TestManagedBean {
         this.currentTest = currentTest;
     }
 
-    //    private Object editorText;
-//
-//    public void setEditorText(Object editorText) {
-//        this.editorText = editorText;
-//    }
-//
-//    public Object getEditorText() {
-//        return editorText;
-//    }
+        private Object editorText;
+
+    public void setEditorText(Object editorText) {
+        this.editorText = editorText;
+    }
+
+    public Object getEditorText() {
+        return editorText;
+    }
 
     public void browseCurrentTest (String title) {
-        currentTest = dataSourse.getTestStructMap().get(title);
+        currentTest = dataSourсe.getTestStructMap().get(title);
     }
 }
