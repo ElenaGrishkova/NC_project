@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c ="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<ui:composition>
+    <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="var">
+        <h:outputText value="#{var.question}"/>
+        <c:choose>
+            <c:when test="#{var.type == 'text'}">
+                !!!
+                <p:inputTextarea widgetVar="editor1"
+                value="#{testManagedBean.editorText}"
+                height="300"
+                style="margin-bottom:10px"/>
+            </c:when>
+
+            <c:when test="#{var.type == 'radio'}">
+                <p:selectOneRadio id="answerOptions" value="#{var.userAnswer}">
+                    <c:forEach items="#{var.answerOptions}" var="option">
+                        <f:selectItem itemLabel="#{option}" itemValue="#{option}" />
+                    </c:forEach>
+                </p:selectOneRadio>
+            </c:when>
+            <c:otherwise>
+                Плохие данные
+                <h:outputText value="#{var.type}" style="color: #cc0000;"/>
+            </c:otherwise>
+        </c:choose>
+    </c:forEach>
+</ui:composition>
+</html>

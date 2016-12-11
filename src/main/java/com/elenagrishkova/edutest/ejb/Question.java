@@ -1,5 +1,9 @@
 package com.elenagrishkova.edutest.ejb;
 
+import org.omg.CORBA.Object;
+
+import java.util.List;
+
 /**
  * Created by egrishkova on 30.11.2016.
  */
@@ -9,15 +13,20 @@ public class Question {
     private String question;
     //тип вопроса - текстовое поле, галочки, итд
     private String type;
-    private String rightAnswer;
+    private List rightAnswer;
+    private String userAnswer; //?????
     private boolean isAutoChecked;
+    private List answerOptions;
 
-    public Question(int number, String question, String type, String rightAnswer, boolean isAutoChecked) {
+
+    public Question(int number, String question, String type, List<String> rightAnswer, boolean isAutoChecked, List<String> answerOptions) {
         this.number = number;
         this.question = question;
         this.type = type;
         this.rightAnswer = rightAnswer;
         this.isAutoChecked = isAutoChecked;
+        this.answerOptions = answerOptions;
+
     }
 
     public int getNumber() {
@@ -37,6 +46,7 @@ public class Question {
     }
 
     public String getType() {
+        System.out.println("Get type = " + type);
         return type;
     }
 
@@ -44,11 +54,11 @@ public class Question {
         this.type = type;
     }
 
-    public String getRightAnswer() {
+    public List<String> getRightAnswer() {
         return rightAnswer;
     }
 
-    public void setRightAnswer(String rightAnswer) {
+    public void setRightAnswer(List<String> rightAnswer) {
         this.rightAnswer = rightAnswer;
     }
     public boolean isAutoChecked() {
@@ -57,5 +67,21 @@ public class Question {
 
     public void setAutoChecked(boolean autoChecked) {
         isAutoChecked = autoChecked;
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
+    }
+
+    public List<String> getAnswerOptions() {
+        return answerOptions;
+    }
+
+    public void setAnswerOptions(List<String> answerOptions) {
+        this.answerOptions = answerOptions;
     }
 }

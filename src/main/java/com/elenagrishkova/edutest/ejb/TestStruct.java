@@ -1,10 +1,11 @@
 package com.elenagrishkova.edutest.ejb;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // описание структуры тестов
 public  class TestStruct {
-    private List<Question> questionList;
+    private List<Question> questionList = new ArrayList<>();
 
     public List<Question> getQuestionList() {
         return questionList;

@@ -14,14 +14,15 @@
 
 
         <p:layout styRFT0le="min-width:400px;min-height:200px;">
-            <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
-                Здесь будет список тестов
-                <p:menu>
+            <p:layoutUnit position="west" resizable="true" size="200" minSize="100" maxSize="400">
+                Список тестов
+                <p:panelMenu style="width:200px">
                     <c:forEach items="#{testManagedBean.dataSourсe.testStructMap}"  var="var">
                         <p:submenu label="#{var.value.title}">
                             <p:menuitem value="Пройти тест"
                                         actionListener="#{testManagedBean.browseCurrentTest(var.value.title)}"
-                                        update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+                                        update="messages mainPanelId"
+                            />
                         </p:submenu>
 
                         <!--<p:submenu label="Navigations">-->
@@ -29,27 +30,33 @@
                             <!--<p:menuitem value="Internal" outcome="/mobile/index" icon="ui-icon-star"/>-->
                         <!--</p:submenu>-->
                     </c:forEach>
-                </p:menu>
+                </p:panelMenu>
             </p:layoutUnit>
 
+            <!--<p:layoutUnit position="center">-->
+                <!--<p:panel id="basic" header="Basic" footer="Movie Details"-->
+                         <!--style="margin-bottom:20px">-->
+                    <!--<h:panelGrid  cellpadding="10">-->
+                        <!--<ui:include src="#{testManagedBean.page}" />-->
+
+                    <!--</h:panelGrid>-->
+                <!--</p:panel>-->
+
+                <!--&lt;!&ndash;<p:commandButton value="Submit" action="#{testManagedBean.browseCu}"&ndash;&gt;-->
+                                 <!--&lt;!&ndash;icon="ui-icon-disk"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p:commandButton value="Clear" type="button" icon="ui-icon-close"/>&ndash;&gt;-->
+
+            <!--</p:layoutUnit>-->
+
             <p:layoutUnit position="center">
-                <p:panel id="basic" header="Basic" footer="Movie Details"
-                         style="margin-bottom:20px">
-                    <h:panelGrid  cellpadding="10">
-                        <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="var">
-                            <h:outputText value="#{var.question}"/>
-                            <p:inputTextarea widgetVar="editor1"
-                                             value="#{testManagedBean.answers}"
-                                  height="300"
-                                          style="margin-bottom:10px"/>
-                        </c:forEach>
-                    </h:panelGrid>
+                <h:panelGroup id="mainPanelId" layout="block">
+                    <ui:include src="#{testManagedBean.page}" />
+                </h:panelGroup>
+            </p:layoutUnit>
+            <p:layoutUnit position="east">
+                <p:panel id="messages" header="Messages">
+                    Messages
                 </p:panel>
-
-                <!--<p:commandButton value="Submit" action="#{testManagedBean.browseCu}"-->
-                                 <!--icon="ui-icon-disk"/>-->
-                <!--<p:commandButton value="Clear" type="button" icon="ui-icon-close"/>-->
-
             </p:layoutUnit>
         </p:layout>
     </h:form>

@@ -18,6 +18,15 @@ public class TestManagedBean {
     private TestStruct currentTest;
 
     private List answers = new ArrayList();
+    private String page = "/WEB-INF/pages/startPage.xhtml";
+
+    public String getPage() {
+        return page;
+    }
+
+    public void changePageAction(String page) {
+        this.page = page;
+    }
 
     public List getAnswers() {
         return answers;
@@ -61,5 +70,6 @@ public class TestManagedBean {
 
     public void browseCurrentTest (String title) {
         currentTest = dataSourсe.getTestStructMap().get(title);
+        changePageAction("/WEB-INF/pages/testEntry.xhtml");
     }
 }
