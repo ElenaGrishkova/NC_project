@@ -70,6 +70,5 @@ public class TestManagedBean {
 
     public void browseCurrentTest (String title) {
         currentTest = dataSourсe.getTestStructMap().get(title);
-        changePageAction("/WEB-INF/pages/testEntry.xhtml");
     }
 }

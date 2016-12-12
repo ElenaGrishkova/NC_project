@@ -19,10 +19,11 @@
                 <p:panelMenu style="width:200px">
                     <c:forEach items="#{testManagedBean.dataSourсe.testStructMap}"  var="var">
                         <p:submenu label="#{var.value.title}">
-                            <p:menuitem value="Пройти тест"
-                                        actionListener="#{testManagedBean.browseCurrentTest(var.value.title)}"
-                                        update="messages mainPanelId"
-                            />
+                            <p:menuitem value="Пройти тест" update="messages mainPanelId">
+                                <f:actionListener binding="#{testManagedBean.browseCurrentTest(var.value.title)}"/>
+                                <f:actionListener binding="#{testManagedBean.changePageAction('/WEB-INF/pages/testEntry.xhtml')}"/>
+                            </p:menuitem>
+
                         </p:submenu>
 
                         <!--<p:submenu label="Navigations">-->
