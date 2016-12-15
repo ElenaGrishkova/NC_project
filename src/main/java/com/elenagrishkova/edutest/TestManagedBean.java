@@ -7,7 +7,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Named
@@ -15,9 +17,11 @@ import java.util.List;
 public class TestManagedBean {
     @Inject
     private DataSourсe dataSourсe;
-    private List<String> userAnswer;
+    private List<String> userAnswerList;
+    private String userAnswer;
     private TestStruct currentTest;
     private List<Answer> answerList;
+    private Map<Long, List<String>> answerMap;
     private String page = "/WEB-INF/pages/startPage.xhtml";
 
     public String getPage() {
@@ -77,15 +81,35 @@ public class TestManagedBean {
     public void browseCurrentTest (String title) {
         currentTest = dataSourсe.getTestStructMap().get(title);
         answerList = new ArrayList<>();
+        answerMap = new HashMap<>();
     }
 
-    public List<String> getUserAnswer() {
-        return userAnswer;
+    public List<String> getUserAnswerList() {
+        return userAnswerList;
     }
 
     //!!!!!!!!!!
-    public void setUserAnswer(List<String> userAnswer) {
-        this.answerList.add(new Answer())
-//        this.userAnswer = userAnswer;
+    public void setUserAnswerList(List<String> userAnswerList) {
+       // this.answerList.add(new Answer())
+        this.userAnswerList = userAnswerList;
+    }
+
+    public Map<Long, List<String>> getAnswerMap() {
+        return answerMap;
+    }
+
+    public void setAnswerMap(Map<Long, List<String>> answerMap) {
+        this.answerMap = answerMap;
+    }
+    public void buttonAction() {
+
+    }
+
+    public String getUserAnswer() {
+        return userAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        this.userAnswer = userAnswer;
     }
 }

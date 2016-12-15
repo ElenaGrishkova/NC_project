@@ -19,7 +19,7 @@ public class Question {
 
 
 
-    public Question(int number, String question, String type, List<String> rightAnswer, boolean isAutoChecked, List<String> answerOptions) {
+    public Question(long id, int number, String question, String type, List<String> rightAnswer, boolean isAutoChecked, List<String> answerOptions) {
         this.number = number;
         this.question = question;
         this.type = type;
