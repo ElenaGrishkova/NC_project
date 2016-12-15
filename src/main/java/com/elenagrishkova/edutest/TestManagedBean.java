@@ -1,4 +1,5 @@
 package com.elenagrishkova.edutest;
+import com.elenagrishkova.edutest.ejb.Answer;
 import com.elenagrishkova.edutest.ejb.DataSourсe;
 import com.elenagrishkova.edutest.ejb.TestStruct;
 
@@ -14,10 +15,9 @@ import java.util.List;
 public class TestManagedBean {
     @Inject
     private DataSourсe dataSourсe;
-
+    private List<String> userAnswer;
     private TestStruct currentTest;
-
-    private List answers = new ArrayList();
+    private List<Answer> answerList;
     private String page = "/WEB-INF/pages/startPage.xhtml";
 
     public String getPage() {
@@ -28,9 +28,9 @@ public class TestManagedBean {
         this.page = page;
     }
 
-    public List getAnswers() {
-        return answers;
-    }
+//    public List getAnswers() {
+//        return answers;
+//    }
 
     //    public TestManagedBean(DataSourse dataSourse) {
 //        this.dataSourse = dataSourse;
@@ -48,8 +48,6 @@ public class TestManagedBean {
         this.dataSourсe = dataSourсe;
     }
 
-
-
     public TestStruct getCurrentTest() {
         return currentTest;
     }
@@ -58,7 +56,7 @@ public class TestManagedBean {
         this.currentTest = currentTest;
     }
 
-        private Object editorText;
+    private Object editorText;
 
     public void setEditorText(Object editorText) {
         this.editorText = editorText;
@@ -68,7 +66,26 @@ public class TestManagedBean {
         return editorText;
     }
 
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
+
     public void browseCurrentTest (String title) {
         currentTest = dataSourсe.getTestStructMap().get(title);
+        answerList = new ArrayList<>();
+    }
+
+    public List<String> getUserAnswer() {
+        return userAnswer;
+    }
+
+    //!!!!!!!!!!
+    public void setUserAnswer(List<String> userAnswer) {
+        this.answerList.add(new Answer())
+//        this.userAnswer = userAnswer;
     }
 }

@@ -1,22 +1,22 @@
 package com.elenagrishkova.edutest.ejb;
 
-import org.omg.CORBA.Object;
-
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by egrishkova on 30.11.2016.
  */
 public class Question {
-
+    private long id;
     private int number;
     private String question;
     //тип вопроса - текстовое поле, галочки, итд
     private String type;
-    private List rightAnswer;
-    private String userAnswer; //?????
+    //варианты ответов
+    private List<String> answerOptions;
+    private List<String> rightAnswer;
     private boolean isAutoChecked;
-    private List answerOptions;
+
 
 
     public Question(int number, String question, String type, List<String> rightAnswer, boolean isAutoChecked, List<String> answerOptions) {
@@ -69,14 +69,6 @@ public class Question {
         isAutoChecked = autoChecked;
     }
 
-    public String getUserAnswer() {
-        return userAnswer;
-    }
-
-    public void setUserAnswer(String userAnswer) {
-        this.userAnswer = userAnswer;
-    }
-
     public List<String> getAnswerOptions() {
         return answerOptions;
     }
@@ -84,4 +76,14 @@ public class Question {
     public void setAnswerOptions(List<String> answerOptions) {
         this.answerOptions = answerOptions;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+
 }

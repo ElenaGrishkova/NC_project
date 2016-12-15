@@ -17,10 +17,10 @@
             <p:layoutUnit position="west" resizable="true" size="200" minSize="100" maxSize="400">
                 Список тестов
                 <p:panelMenu style="width:200px">
-                    <c:forEach items="#{testManagedBean.dataSourсe.testStructMap}"  var="var">
-                        <p:submenu label="#{var.value.title}">
+                    <c:forEach items="#{testManagedBean.dataSourсe.testStructMap}"  var="question">
+                        <p:submenu label="#{question.value.title}">
                             <p:menuitem value="Пройти тест" update="messages mainPanelId">
-                                <f:actionListener binding="#{testManagedBean.browseCurrentTest(var.value.title)}"/>
+                                <f:actionListener binding="#{testManagedBean.browseCurrentTest(question.value.title)}"/>
                                 <f:actionListener binding="#{testManagedBean.changePageAction('/WEB-INF/pages/testEntry.xhtml')}"/>
                             </p:menuitem>
 

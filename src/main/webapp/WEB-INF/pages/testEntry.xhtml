@@ -9,34 +9,34 @@
 >
 
 <ui:composition>
-    <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="var">
-        <h:outputText value="#{var.question}"/>
+    <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="question">
+        <h:outputText value="#{question.question}"/>
         <c:choose>
-            <c:when test="#{var.type == 'text'}">
+            <c:when test="#{question.type == 'text'}">
                 <p:inputTextarea widgetVar="editor1"
-                value="#{testManagedBean.editorText}"
+                value="#{testManagedBean.userAnswer}"
                 height="300"
                 style="margin-bottom:10px"/>
             </c:when>
 
-            <c:when test="#{var.type == 'radio'}">
-                <p:selectOneRadio id="answerOptions" value="#{var.userAnswer}">
-                    <c:forEach items="#{var.answerOptions}" var="option">
+            <c:when test="#{question.type == 'radio'}">
+                <p:selectOneRadio id="answerOptions" value="#{testManagedBean.userAnswer}" valueChangeListener="">
+                    <c:forEach items="#{question.answerOptions}" var="option">
                         <f:selectItem itemLabel="#{option}" itemValue="#{option}" />
                     </c:forEach>
                 </p:selectOneRadio>
             </c:when>
 
-            <c:when test="#{var.type == 'checkbox'}">
-                <p:selectManyCheckbox id="basic" value="#{var.userAnswer}">
-                    <c:forEach items="#{var.answerOptions}" var="option">
-                        <f:selectItem itemLabel="#{option}" itemValue="#{option}" />
+            <c:when test="#{question.type == 'checkbox'}">
+                <p:selectManyCheckbox id="basic" value="#{testManagedBean.userAnswer}">
+                    <c:forEach items="#{question.answerOptions}" var="option">
+                        <f:selectItem itemLabel="#{option}" itemValue="#{option}"/>
                     </c:forEach>
                 </p:selectManyCheckbox>
             </c:when>
             <c:otherwise>
                 Плохие данные
-                <h:outputText value="#{var.type}" style="color: #cc0000;"/>
+                <h:outputText value="#{question.type}" style="color: #cc0000;"/>
             </c:otherwise>
         </c:choose>
         <p:separator />
