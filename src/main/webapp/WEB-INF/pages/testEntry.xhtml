@@ -42,13 +42,28 @@
         <p:separator />
     </c:forEach>
 
-    <p:commandButton value="Закончить тест" update="label2"
+    <p:commandButton value="Закончить тест" update="padding"
                      actionListener="#{testManagedBean.buttonAction()}"  />
-    <c:forEach items="#{testManagedBean.currentTest.questionList}"  var="questionEntity">
-        <h:outputText value="#{testManagedBean.answerMap.get(questionEntity.id).get(0)}" style="color: #ccaa00;"/>
+    <h:panelGroup id="padding" layout="block">
+        <h:outputText id="ttt" value="#{testManagedBean.selected}"/>
+    </h:panelGroup>
+    <h:panelGroup id="periodLabelWrapper">
+    <!--<c:forEach items="#{testManagedBean.currentTest.questionList}"  var="questionEntity">-->
+        <!--<h:outputText value="#{testManagedBean.answerMap.get(questionEntity.id).get(0)}" style="color: #ccaa00;"/>-->
+        <!--<h:outputText value="#{testManagedBean.selected}"/>-->
+        <!--<p:outputLabel id="label2" value="#{testManagedBean.selected}"/>-->
 
-        <p:outputLabel id="label2" value="#{testManagedBean.userAnswer}"/>
+    <!--</c:forEach>-->
+    </h:panelGroup>
 
-    </c:forEach>
+    <!-- Самый первый пример primefaces. Не работает!! -->
+
+        <h:panelGrid columns="4" cellpadding="5">
+            <h:outputLabel for="name" value="Name:"  />
+            <p:inputText id="name" value="#{testManagedBean.editorText}" />
+            <p:commandButton value="Submit" update="display"  />
+            <h:outputText id="display" value="#{testManagedBean.editorText}" />
+        </h:panelGrid>
+
 </ui:composition>
 </html>

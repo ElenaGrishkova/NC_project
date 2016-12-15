@@ -53,6 +53,14 @@
                 <h:panelGroup id="mainPanelId" layout="block">
                     <ui:include src="#{testManagedBean.page}" />
                 </h:panelGroup>
+
+                <!-- Тут работает, а внутри ui:components нет! Чудеса -->
+                <h:panelGrid columns="4" cellpadding="5">
+                    <h:outputLabel for="name" value="Name:" style="font-weight:bold" />
+                    <p:inputText id="name" value="#{testManagedBean.editorText}" />
+                    <p:commandButton value="Submit" update="display" icon="ui-icon-check" />
+                    <h:outputText id="display" value="#{testManagedBean.editorText}" />
+                </h:panelGrid>
             </p:layoutUnit>
             <p:layoutUnit position="east">
                 <p:panel id="messages" header="Messages">
@@ -60,6 +68,10 @@
                 </p:panel>
             </p:layoutUnit>
         </p:layout>
+
     </h:form>
+
+
+
 </h:body>
 </html>

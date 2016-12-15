@@ -112,4 +112,17 @@ public class TestManagedBean {
     public void setUserAnswer(String userAnswer) {
         this.userAnswer = userAnswer;
     }
+
+    public String getSelected() {
+        String result = "RES";
+        for (Map.Entry<Long, List<String>> entry : answerMap.entrySet()) {
+            for (String s: entry.getValue()) {
+                result = result + ", " + s;
+            }
+
+        }
+        result+= userAnswer;
+        System.out.println("RES: " + result);
+        return result.length() == 0 ? "" : result;
+    }
 }
